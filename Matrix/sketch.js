@@ -1,6 +1,6 @@
 let streams = [];
-let symbolSize =  24;
-let marginPixels = 22;
+const symbolSize =  24;
+const marginPixels = 22;
 
 function setup() {
   createCanvas(window.innerWidth - marginPixels, window.innerHeight - marginPixels);
