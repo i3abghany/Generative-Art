@@ -33,7 +33,7 @@ function Symbol(x, y, speed, first) {
     if(frameCount % this.switchInterval == 0) {
       this.value = String.fromCharCode(
         // 0x0623 + round(random(0, 25 * 6)) // arabic symbols.
-        0X30A0 + round(random(0, 96)) // japanese symbols.
+        0x30A0 + round(random(0, 96)) // japanese symbols.
       );
     }
   }
@@ -49,7 +49,7 @@ function Stream() {
   this.speed = random(2, 10);
 
   this.generateSymbols = function(x, y) {
-    let first = round(random(0, 1)) == 1;
+    let first = (round(random(0, 1)) == 1);
     for(let i = 0; i <= this.totalSymbols; i++) {
       let symbol = new Symbol(x, y, this.speed, first);
       symbol.setToRandomSymbol();
@@ -60,10 +60,12 @@ function Stream() {
   }
   this.render = function() {
     this.symbols.forEach((symbol) => {
-        if(symbol.first)
+        if(symbol.first) {
           fill(180, 255, 180);
-        else
+        }
+        else {
           fill(0, 255, 50);
+        }
         text(symbol.value, symbol.x, symbol.y);
         symbol.setToRandomSymbol();
         symbol.rain();
