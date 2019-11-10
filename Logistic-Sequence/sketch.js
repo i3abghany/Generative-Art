@@ -32,11 +32,19 @@ function draw() {
         ps[i] = K * ps[i - 1] * (1 - ps[i - 1]);
     }
     translate(0, height);
+    let prevx = 0, prevy = ps[0] * height - 30;
     const col_width = width / mx_p;
     for(let i = 0; i < mx_p; i++) {
         let nx = i * col_width;
         let ny = ps[i] * height - 30;
-        stroke(255); strokeWeight(3);
+        if(i != 0) {
+            stroke(255, 100);
+            strokeWeight(2);
+            line(prevx, -prevy, nx, -ny);
+            prevx = nx;
+            prevy = ny;
+        }
+        stroke(255, 0, 0); strokeWeight(7);
         point(nx, -ny);
     }
 }
